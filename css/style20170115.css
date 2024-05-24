@@ -1,0 +1,33 @@
+<style>
+<!--
+		
+   a:active  {text-decoration:none; color : #0000BB;}
+	a:link 		{text-decoration:none; color : #5555CC;}
+	a:visited {text-decoration:none; color : #5555CC;}
+	a:hover 	{text-decoration:none; color : #FF2266;}
+	
+	
+body {
+  scrollbar-face-color          : #d0dee0;
+	scrollbar-shadow-color        : #d0dee0;
+	scrollbar-highlight-color     : #d0dee0;
+	scrollbar-3dlight-color       : #d0dee0;
+	scrollbar-darkshadow-color    : #d0dee0;
+	scrollbar-track-color         : #ffffff;
+	scrollbar-arrow-color         : #ffffff;
+}
+
+
+/*--*/
+select        {font-family:"malgun gothic","arial","verdana";font-size:10pt;color:#424242;}
+input         {font-family:"malgun gothic","arial","verdana";font-size:10pt;color:#202020;}
+textarea      {font-family:"malgun gothic","arial","verdana";font-size:10pt;color:#202020;}
+th            {font-family:"malgun gothic","arial","verdana";font-size:10pt;color:#404040;text-align:center; }
+td            {font-family:"malgun gothic","arial","verdana";font-size:10pt;}
+  .normal { font-family:arial;verdana; font-size:10pt; line-height:130%;};
+  .menu   { font-family:verdana;arial; font-size:10pt;};
+  .line   { font-family:arial;verdana; font-size:10pt;};
+  .bold   { font-family:arial;verdana; font-size:10pt; line-height:130%; font-weight: bold;};
+	
+-->
+</style>

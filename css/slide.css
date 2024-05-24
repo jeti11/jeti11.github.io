@@ -1,0 +1,20 @@
+<style>
+<!--
+      /* Demo styles */
+     html,body{margin:0;}
+     body{border-top:4px solid #777;}
+       .content{color:#111;font:12px/1.4 arial,±¼¸²,"helvetica neue";width:841px;margin:20px auto;}
+
+	A:link 	{text-decoration:none;color:#330099;}
+	A:visited {text-decoration:none;color:#330099;}
+	A:hover {text-decoration:none;color:#cc0000;}
+     .cred{margin-top:20px;font-size:11px;}
+     
+  div {}
+     .show { background-image: url('./themes/classic/loader.gif');background-repeat: no-repeat;background-position: 50% 50%;}
+
+    /* This rule is read by Galleria to define the gallery height: */
+     #galleria{height:671px;}
+
+-->
+</style>

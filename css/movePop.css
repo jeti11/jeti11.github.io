@@ -1,0 +1,25 @@
+    
+    #movePop_overlay {display:block; overflow:hidden; position:fixed; background-color:rgba(252, 252, 252, .75); top:0; right:0; bottom:0; left:0; z-index:100000; cursor:wait;}
+    #movePop {display:none; position:fixed; top:0; right:0; bottom:0; left:0; overflow-x:auto; overflow-y:scroll; z-index:100004;}
+    #movePop_container {position : relative; cursor:move; background-color:white; -webkit-box-shadow:0 0 1px rgba(0, 0, 0, .25), 0 1px 5px 3px rgba(0, 0, 0, .05), 0 5px 4px -3px rgba(0, 0, 0, .06); margin:9px auto 100px auto;
+        max-width:1300px; min-width:400px; padding:0px; width:720px; height:500px; z-index:2; background:#fff;}
+
+    #movePop_content {display:none; padding:0; overflow:hidden; cursor:default;}
+    #movePop_frame {display:none; width:100%; height:100%;}
+    #movePop_log {display:none; position:fixed; top:10px; left:10px; overflow:auto; width:200px; height:400px; background:#fff; border:solid 1px #444; padding:10px; z-index:3;}
+    #movePop_close_wrap {position:absolute;}
+    #movePop_close {position:absolute; width:14px; height:13px; background:url(./img/btn_close1.png); right:10px; top:10px; cursor:pointer;}
+    #movePop_loading {position:relative; margin:10px auto 0 auto; width:16px; height:16px; background:url(./img/loading.gif); cursor:wait;}
+    
+    
+/*Help*/
+.wrap			{position:absolute; display:none; height:100%;} /*width:100%;*/
+.helpButton		{vertical-align:top; cursor:pointer;}
+.helpArea		{float:left; position:absolute; z-index:200;
+				 width:auto; height:auto; margin:0px; padding:5px;				 
+				 border-style:solid; border-color:#c4cbe4; background-color:#FFFFFF;}
+.helpAreaTop	{float:left; position:relative; width:100%; height:20px; background-color:#FFFFFF; z-index:201; clear:both;}
+.helpDragArea	{float:left; position:static; width:auto; z-index:202;}
+.helpClose		{float:right;position:static; width:30px; cursor:pointer; z-index:202;}
+.helpContents	{float:left; position:relative; z-index:202;
+				 width:100%; height:auto; background-color:#FFFFFF;} /*overflow:auto;*/

@@ -1,0 +1,29 @@
+<STYLE>
+<!--
+		A:link 			{COLOR : #3300aa;}
+		A:visited 	{COLOR : #3300aa;}
+		A:hover 		{COLOR : #ff0000;}
+
+body {  scrollbar-3dlight-color:#3399FF;
+				scrollbar-arrow-color:#FFFFFF;
+				scrollbar-track-color:#FFFFFF;
+				scrollbar-darkshadow-color:#3399FF;
+				scrollbar-face-color:#3399FF;
+				scrollbar-highlight-color:;
+				scrollbar-shadow-color:#FFFFFF;}
+
+TD	{	font-family:¸¼Àº°íµñ;Tahoma;Verdana;Arial;font-size:12px;}
+  .normal { font-family:Arial;Verdana; font-size: 12px; line-height:130%;};
+  .menu   { font-family:Verdana;Arial; font-size: 12px;};
+  .line   { font-family:Arial;Verdana; font-size: 12px;};
+  .bold   { font-family:Arial;Verdana; font-size: 12px; line-height:130%; font-weight: bold;};
+
+
+Input{	font-family:Arial;verdana;
+		font-size:12px;
+		border:1px solid silver;
+		padding:1px;
+		padding-left:5px;}
+	
+-->
+</STYLE>
