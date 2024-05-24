@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="google bot" content="noindex">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>J.ONE MES</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+  <script>
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+      //var element = document.getElementById("fullscreen-element");
+
+      if (!document.fullscreenElement) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+          element.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+  </script>
+  <style>
+    @media (max-width : 1600px) {
+      body {
+        font-size: 12px;
+      }
+    }
+
+    .container-fluid {
+      padding: 0 !important;
+    }
+
+    .bg-mainDarkGray {
+      background-color: #000000e8;
+    }
+
+    .bg-chart {
+      background-color: rgb(46, 46, 46);
+    }
+  </style>
+</head>
+
+<body id="page-top" class="bg-mainDarkGray">
+  
+  <!-- Topbar -->
+  <nav class="navbar navbar-expand navbar-dark static-top" style="border-bottom: 1px solid gray;">
+
+    <!-- Topbar COMPANY -->
+    <div class="navbar-brand ml-3">JAESANG P&S</div>
+
+    <div class="ml-5 d-flex">
+      <div class="nav-item">
+        <a href="#" class="nav-link btn btn-outline-success"><i class="fas fa-home mr-2"></i>메인</a>
+      </div>
+      <div class="nav-item">
+        <a href="../main/etc/ss_st2.html" class="nav-link btn btn-outline-dark ml-2"><i
+            class="fas fa-home mr-2"></i>A9</a>
+      </div>
+      <div class="nav-item">
+        <a href="../main/etc/ss_st3.html" class="nav-link btn btn-outline-dark ml-2"><i
+            class="fas fa-home mr-2"></i>DUCT OUTLET</a>
+      </div>
+      <div class="nav-item">
+        <a href="../main/etc/ss_st4.html" class="nav-link btn btn-outline-dark ml-2"><i class="fas fa-home mr-2"></i>TUB
+          RAIL A&M</a>
+      </div>
+      <div class="nav-item">
+        <a href="../main/etc/ss_st5.html" class="nav-link btn btn-outline-dark ml-2"><i
+            class="fas fa-home mr-2"></i>종합라인 가동상태</a>
+      </div>
+    </div>
+
+    <ul class="navbar-nav ml-auto">
+
+      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+      <li class="nav-item dropdown no-arrow d-sm-none">
+        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-search fa-fw"></i>
+        </a>
+        <!-- Dropdown - Messages -->
+        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+          <form class="form-inline mr-auto w-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- Nav Item - Alerts -->
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell fa-fw"></i>
+          <!-- Counter - Alerts -->
+          <span class="badge badge-danger badge-counter">3+</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - Messages -->
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-envelope fa-fw"></i>
+          <!-- Counter - Messages -->
+          <span class="badge badge-danger badge-counter">7</span>
+        </a>
+      </li>
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img class="img-profile rounded-circle" src="http://ems.jaesangpns.com:9002/img/undraw_profile.svg"
+            style="width: 25px;">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Profile
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            Settings
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+            Activity Log
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- End of Topbar -->
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="./login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+      <!-- Begin main content -->
+      <div style="color: white; height: 100%;">
+
+        <!-- 첫 줄 시작 -->
+        <div class="p-2 d-flex" style="width: 100%; height: 33%;">
+          <!-- 온도 -->
+          <div class="mx-1 h-100" style="width: 18%;">
+            <div class="bg-danger d-flex align-items-center justify-content-center" style="height: 55%;">
+              <i class="fas fa-thermometer-half" style="font-size: 50px;"></i>
+            </div>
+            <div class="bg-white d-flex align-items-center justify-content-center" style="height: 45%; color: black;">
+              <span class="font-weight-bold" style="font-size: 40px;">5.0</span>
+              <span class="ml-2 mt-3">°C</span>
+            </div>
+          </div>
+
+          <!-- 습도 -->
+          <div class="mx-1 h-100" style="width: 18%;">
+            <div class="bg-primary d-flex align-items-center justify-content-center" style="height: 55%;">
+              <i class="fas fa-tint" style="font-size: 50px;"></i>
+            </div>
+            <div class="bg-white d-flex align-items-center justify-content-center" style="height: 45%; color: black;">
+              <span class="font-weight-bold" style="font-size: 40px;">50</span>
+              <span class="ml-2 mt-3">%</span>
+            </div>
+          </div>
+
+          <!-- 유효전력 차트 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 46%;">
+            <div style="height: 20%;">
+              <span id="r1-chart-value" style='font-size: 30px;' class="ml-2">0.0</span>
+              <span>kw</span>
+              <span class="ml-4">가공#1 유효전력</span>
+            </div>
+            <div id="r1-chart" style="width: 100%; height: 80%;"></div>
+          </div>
+
+          <!-- 시간/날씨 -->
+          <div class="mx-1 bg-success d-flex flex-column" style="width: 18%;">
+            <div id="currTime" class="h-25 d-flex align-items-center justify-content-center"
+              style="font-size: xx-large;"></div>
+            <div class="h-50 d-flex align-items-center justify-content-center">
+              <i class="fas fa-sun" style="font-size: 70px;"></i>
+            </div>
+            <div class="h-25 d-flex align-items-center justify-content-center">맑음 (강수확률 10%)</div>
+          </div>
+        </div>
+
+
+        <!-- 두번 째 줄 시작 -->
+        <div class="px-2 d-flex" style="width: 100%; height: 33%;">
+          <!-- r2-chart1 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 32%;">
+            <div id="r2-chart1" style="width: 100%; height: 100%;"></div>
+          </div>
+
+          <!-- r2-chart2 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 24%;">
+            <div id="r2-chart2" style="width: 100%; height: 100%;"></div>
+          </div>
+
+          <!-- r2-chart3 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 46%;">
+            <div id="r2-chart3" style="width: 100%; height: 100%;"></div>
+          </div>
+
+        </div>
+
+
+        <!-- 세번 째 줄 시작 -->
+        <div class="p-2 d-flex" style="width: 100%; height: 34%;">
+          <!-- r2-chart1 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 40%;">
+            <div id="r3-chart1" style="width: 100%; height: 100%;"></div>
+          </div>
+
+          <!-- r2-chart2 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 35%;">
+            <div id="r3-chart2" style="width: 100%; height: 100%;"></div>
+          </div>
+
+          <!-- r2-chart3 -->
+          <div class="mx-1 h-100 bg-chart" style="width: 25%;">
+            <div id="r3-chart3" style="width: 100%; height: 100%;"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- div class="container-fluid" -->
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+
+  <!-- 메인페이지 JS -->
+  <script src="../js/demo/index.js"></script>
+
+
+</body>
+
+</html>

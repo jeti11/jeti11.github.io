@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="google bot" content="noindex">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>J.ONE MES</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <!-- google charts -->
+  <script type="text/javascript" src="../../js/loader.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+  <script>
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+      //var element = document.getElementById("fullscreen-element");
+
+      if (!document.fullscreenElement) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+          element.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+  </script>
+  <style>
+
+    @media (max-width : 1600px) {
+      body {
+        font-size: 12px;
+      }
+    } 
+
+    .table-borderd {
+      border: 1px solid #212F3C !important;
+    }
+
+    .table th, .table td {
+      padding: 0.75rem !important;
+      border-top: 1px solid #212F3C;
+      border-left: 1px solid #212F3C;
+      border-right: 1px solid #212F3C;;
+    }
+
+    .factory_location {
+      color: #212F3C;
+      background-color: aliceblue;
+      font-size: 27px;
+    }
+
+    .equip {
+      font-size: 20px;
+    }
+
+    .process {
+      font-size: 14px;
+    }
+
+    .rate {
+      font-size: 14px;
+    }
+
+    td {
+      background-color: aqua;
+    }
+    
+    .d_none {
+      background-color: #212F3C;
+      border: none;
+    }
+
+    .bg-red {
+      background-color: #dc4935;
+    }
+
+    .bg-green {
+      background-color: rgb(57, 161, 57);
+    }
+
+    .bg-orange {
+      background-color: #df922e;
+    }
+
+    .bg-darkGray {
+      background-color: #4b4b4b;
+    }
+
+    .bg-gray {
+      background-color: #afafaf;
+    }
+
+    .bg-lightGray {
+      background-color: #e6e6e6;
+      color: #212F3C;
+    }
+
+    .h-30 {
+      height: 30% !important;
+    }
+
+    .h-40 {
+      height: 40% !important;
+    }
+
+    /* 텍스트 애니메이션 */
+    .scrolling-wrapper {
+      overflow: hidden; /* 요소 너비를 벗어나는 텍스트를 숨깁니다 */
+      white-space: nowrap; /* 텍스트를 한 줄로 만듭니다 */
+      width: 130px;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+    }
+
+    @keyframes scroll-left {
+      0% {
+          transform: translateX(0%);
+      }
+      100% {
+          transform: translateX(-30%);
+      }
+    }
+  </style>
+</head>
+
+<body id="page-top" bgcolor="#212F3C" style="background-color: #212F3C;">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <a href='../index.html'> <button type="button" class="w-15 btn btn-sm btn-outline-danger text-center">Back</button></a> &nbsp; 
+      <button onclick="startFS(document.body);" type="button" class="w-15 btn btn-sm btn-outline-success text-center">FULL Screen to Press F11 button</button> 
+
+      <div class="row" id="fullscreen-element" style="background-color:#212F3C;">
+
+        <div class="col-md-12">
+          <div id="contents_area" class="row border rounded overflow-hidden flex-md-row mb-3 shadow-sm position-relative">
+            <div class="col p-3">
+              <h2 class="text-warning mb-4">[생산라인 가동상태]</h2>
+              <table class="table table-borderd text-center w-100" style="color: white; height: 90%;">
+
+                <!-- A 동 -->
+                <tr id="location_A">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">A동</div>
+                      <div style="font-size: 14px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">김해공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="bg-gray">
+                    <div style="height: 100%;">
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">흥진 600T 1호기</div>
+                      </div>
+                      <div class="h-30 process w-100 d-flex align-items-end justify-content-center">
+                        <div>OLD PANEL 1공정</div>
+                      </div>
+                      <div class="h-30 w-100 rate d-flex align-items-end justify-content-center">
+                        <span class="pro-rate">25</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="bg-gray">
+                    <div style="height: 100%;">
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">흥진 600T 2호기</div>
+                      </div>
+                      <div class="h-30 process w-100 d-flex align-items-end justify-content-center">
+                        <div></div>
+                      </div>
+                      <div class="h-30 w-100 rate d-flex align-items-end justify-content-center">
+                        <span class="pro-rate">0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="bg-green">
+                    <div style="height: 100%;">
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">PRO 1 LINE (한일400T)</div>
+                      </div>
+                      <div class="h-30 process w-100 d-flex align-items-end justify-content-center">
+                        <div>Ref 30mm 1차</div>
+                      </div>
+                      <div class="h-30 w-100 rate d-flex align-items-end justify-content-center">
+                        <span class="pro-rate">55</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="bg-red">
+                    <div style="height: 100%;">
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">PRO 2 LINE (한일600T)</div>
+                      </div>
+                      <div class="h-30 process w-100 d-flex align-items-end justify-content-center">
+                        <div>Frame, Body</div>
+                      </div>
+                      <div class="h-30 w-100 rate d-flex align-items-end justify-content-center">
+                        <span class="pro-rate">4</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="bg-lightGray">
+                    <div style="height: 100%;">
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">PRO 3 LINE (쌍용250T)</div>
+                      </div>
+                      <div class="h-30 process w-100 d-flex align-items-end justify-content-center">
+                        <div>Frame, Body (Rear)</div>
+                      </div>
+                      <div class="h-30 w-100 rate d-flex align-items-end justify-content-center">
+                        <span class="pro-rate">56</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">Transfer 2 Line (600T)A동</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>MAIN FILTER (XD)</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td colspan='5' class='d_none'></td>
+                </tr>
+
+                <!-- D 동 -->
+                <tr id="location_D">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">D동</div>
+                      <div style="font-size: 12px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">김해공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>MANIFOLD</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>(전기) MANIFOLD</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>89</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>고속 60T</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>MAIN FILTER</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>19</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-lightGray'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>교리 80T</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>MAIN FILTER</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>3</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>ISIS 45T</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div></div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-gray'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>쌍용 50T</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>METAL SPRING</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class='h-40 equip'>고마츠 80T</div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div></div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td colspan="5" class="d_none"></td>
+                </tr>
+
+                <!-- E 동 -->
+                <tr id="location_E">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">E동</div>
+                      <div style="font-size: 12px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">김해공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">TPL 1 Line (600T TPL)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>14인용 DOOR</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>46</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">TPL 2 Line (600T Link)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>16인용 DOOR</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>59</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">ASM 1 Line (14인용)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>XD/14_G2_Steam</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>52</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">ASM 2 Line (16인용)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Semi Steam Door</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>47</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">ASM 3 Line (TT)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div></div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-gray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">Transfer 1 Line (600T) E동</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Lower Press</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>87</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">KEPLER ASM</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div></div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td colspan="4" class="d_none"></td>
+                </tr>
+
+                <!-- I 동 -->
+                <tr id="location_I">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">I동</div>
+                      <div style="font-size: 12px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">김해공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">SLIM LIFTER</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div style="color: #4b4b4b;">투명 텍스트</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td colspan="10" class="d_none"></td>
+                </tr>
+
+                <!-- L 동 -->
+                <tr id="location_L">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">L동</div>
+                      <div style="font-size: 12px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">김해공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">TPL 3 Line (200T Servo)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>DECOR FRAME</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>22</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-red'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">200T PRO</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Frame, Body (side)</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>15</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">SERVO 300T</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Slim Lifter 35mm</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>95</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">TUB RAIL</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>튜브레일XD 14</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>39</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-gray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">Balance Weight (A9)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>A9 Battery Balance</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">SUPPORT ROLLER(R)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Roller ASSM R</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>48</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-green'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">SUPPORT ROLLER(L)</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>Roller ASSM L</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>49</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td colspan="4" class="d_none"></td>
+                </tr>
+
+                <!-- 창원 공장 -->
+                <tr id="location_CW">
+                  <th class="factory_location">
+                    <div style="height: 100%;">
+                      <div style="height: 50%;">창원공장</div>
+                      <div style="font-size: 12px; height: 50%;" class="d-flex align-items-end">
+                        <div class="w-100">창원공장</div>
+                      </div>
+                    </div>
+                  </th>
+                  <td class='bg-darkGray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">100파이 자동</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div></div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class='bg-gray'>
+                    <div style='height: 100%;'>
+                      <div class="h-40 equip scrolling-wrapper" >
+                        <div class="scrolling-text">100파이 수동</div>
+                      </div>
+                      <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                        <div>DUCT ASM</div>
+                      </div>
+                      <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                        <span class='pro-rate'>0</span>
+                        <span>%</span>
+                      </div>
+                    </div>
+                    <td class='bg-darkGray'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">250T TPL</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div></div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>0</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-gray'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">국일 350T</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>UNNEL PRESS</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>69</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-green'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">화일 400T PRO</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>KT(4811EL1002)</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>56</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-darkGray'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">400T TPL</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div></div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>0</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-green'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">500T TPL</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>TUB CENTER (XD)</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>41</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-orange'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">D3 600T</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>MN Top Plate</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>32</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-green'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">MOTOR 자동</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>MOTOR BKT ASM</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>61</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-gray'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">심팩 400Ton Pro (창원)</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div>MN Top Plate</div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>0</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class='bg-darkGray'>
+                      <div style='height: 100%;'>
+                        <div class="h-40 equip scrolling-wrapper" >
+                          <div class="scrolling-text">100파이 자동화 2호</div>
+                        </div>
+                        <div class='h-30 process w-100 d-flex align-items-end justify-content-center'>
+                          <div></div>
+                        </div>
+                        <div class='h-30 w-100 rate d-flex align-items-end justify-content-center'>
+                          <span class='pro-rate'>0</span>
+                          <span>%</span>
+                        </div>
+                      </div>
+                    </td>
+                </tr>
+                <tr id="bg_color_check" style="height: 150px;">
+                  <td colspan="11" class="d_none"></td>
+                  <td style="height: auto;">
+                    <div class="bg-green">진행</div>
+                    <div class="bg-orange">생산정지</div>
+                    <div class="bg-red">이상정지</div>
+                    <div class="bg-lightGray">휴지</div>
+                    <div class="bg-gray">대기, 완료</div>
+                    <div class="bg-darkGray">작업없음</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- div class="container-fluid" -->
+
+  </div>
+  <!-- End of Main Content -->
+
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin-2.min.js"></script>
+
+  <!-- 페이지2 실시간 그래프 -->
+  <script src="../../js/demo/ss_st5.js"></script>
+
+
+</body>
+
+</html>

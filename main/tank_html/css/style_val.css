@@ -1,0 +1,399 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.tk_bg {
+    background-image: url("../images/val_2.png");
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+.txt_tk01t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 475px;
+    font-weight: bold;
+}
+.txt_tk02t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 820px;
+    font-weight: bold;
+}
+.txt_tk03t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 1155px;
+    font-weight: bold;
+}
+.txt_tk04t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 1495px;
+    font-weight: bold;
+}
+
+.txt_tk05t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 1610px;
+    font-weight: bold;
+}
+
+.txt_tk06t {
+    font-size: 40px;
+    position: absolute;
+    top: 40px;
+    left: 1710px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+.t1 {
+    position: absolute;
+    top: 330px;
+    left: 245px;
+    width: 150px;
+    text-align: center;
+}
+.t1_1 {
+    padding: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+/* ---  // number Size /// -------------------*/
+.t1_2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 7px;
+}
+.t1_3 {
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.6);
+    text-align: right;
+    padding: 7px;
+    margin-top: 10px;
+}
+
+/* ---  // number /// -------------------*/
+
+
+.t1_4 {
+    padding: 3px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.t2 {
+    position: absolute;
+    top: 330px;
+    left: 450px;
+    width: 150px;
+    text-align: center;
+}
+.t3 {
+    position: absolute;
+    top: 330px;
+    left: 656px;
+    width: 150px;
+    text-align: center;
+}
+.t4 {
+    position: absolute;
+    top: 330px;
+    left: 857px;
+    width: 150px;
+    text-align: center;
+}
+
+.t5 {
+    position: absolute;
+    top: 330px;
+    left: 1065px;
+    width: 150px;
+    text-align: center;
+}
+
+
+.t6 {
+    position: absolute;
+    top: 330px;
+    left: 1268px;
+    width: 150px;
+    text-align: center;
+}
+
+
+
+.t7 {
+    position: absolute;
+    top: 90px;
+    left: 1550px;
+    width: 150px;
+    text-align: center;
+}
+.t8 {
+    position: absolute;
+    top: 630px;
+    left: 1555px;
+    width: 150px;
+    text-align: center;
+}
+
+
+
+
+.bar1 {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 400px;
+    left: 150px;
+    width: 100px;
+    border: 2px solid #b0b0b0;
+    padding: 10px;
+    text-align: right;
+    background-color: #fff;
+}
+.bar1_b {
+    font-weight: bold;
+    position: absolute;
+    top: 420px;
+    left: 150px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.bar2 {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 420px;
+    left: 570px;
+    width: 100px;
+    border: 2px solid #b0b0b0;
+    padding: 10px;
+    text-align: right;
+    background-color: #fff;
+}
+.bar2_b {
+    font-weight: bold;
+    position: absolute;
+    top: 460px;
+    left: 570px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.txt1 {
+    font-weight: bold;
+    position: absolute;
+    top: 362px;
+    left: 525px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.txt2 {
+    font-weight: bold;
+    position: absolute;
+    top: 362px;
+    left: 870px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.txt3 {
+    font-weight: bold;
+    position: absolute;
+    top: 362px;
+    left: 1215px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.txt4 {
+    font-weight: bold;
+    position: absolute;
+    top: 362px;
+    left: 1550px;
+    width: 100px;
+    padding: 7px 10px;
+    text-align: center;
+}
+
+
+
+.hp1 {
+    position: absolute;
+    top: 657px;
+    left: 380px;
+    width: 150px;    
+    text-align: center;
+}
+.hp1_1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px;
+}
+.hp1_2 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    width: 120px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 5px;
+    margin-top: 5px;
+}
+.hp1_3 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    width: 130px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 5px;
+    margin-top: 5px;
+}
+.hp1_4 {
+    position: absolute;
+    top: 280px;
+    left: 110px;
+    font-weight: bold;
+    width: 100px;
+}
+
+
+.hp2 {
+    position: absolute;
+    top: 657px;
+    left: 1282px;
+    width: 150px;
+    text-align: center;
+}
+
+
+.hp3 {
+    position: absolute;
+    top: 587px;
+    left: 1000px;
+    width: 150px;
+    text-align: center;
+}
+.hp4 {
+    position: absolute;
+    top: 587px;
+    left: 1282px;
+    width: 150px;
+    text-align: center;
+}
+
+.hp5 {
+    position: absolute;
+    top: 587px;
+    left: 1576px;
+    width: 150px;
+    text-align: center;
+}
+
+
+
+
+/*====== popup ===================*/
+.rabt{
+	width: 272px;
+	line-height: 27px;
+	height: 80px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	// background-color: #4056c1;
+	//background-color: #fefefe;
+	border-radius: 5px;
+}
+.rabt:hover{
+	// background-color: #ff6c00;
+	
+	
+		background-color:rgba(255,80,00, 0.2);/*까만색(0,0,0) 20% 불투명도*/
+	// cursor: grab;
+	cursor: help;
+}
+
+.pop1  {position: absolute;
+  top:800px;
+  left:1220px;
+ }
+.pop2  {position: absolute;
+  top:800px;
+  left:1507px;
+ }
+ 
+.pop3  {position: absolute;
+  top:885px;
+  left:1220px;
+ }
+.pop4  {position: absolute;
+  top:885px;
+  left:1507px;
+ }
+ 
+.pop5  {position: absolute;
+  top:970px;
+  left:1220px;
+ }
+.pop6  {position: absolute;
+  top:970px;
+  left:1507px;
+ }

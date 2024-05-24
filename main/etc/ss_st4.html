@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="google bot" content="noindex">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>J.ONE MES</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <!-- google charts -->
+  <script type="text/javascript" src="../../js/loader.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+
+  <script>
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+      //var element = document.getElementById("fullscreen-element");
+
+      if (!document.fullscreenElement) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+          element.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+
+
+
+    //document.getElementsByTagName("form")[0].onsubmit = function () {
+    //var c1 = this.count1.value
+    //return false;
+    //}
+
+
+  </script>
+  <style>
+
+    .navyCol {
+      background-color: #0f1d69;
+      color: white;
+    }
+    .table td {
+      padding: 0.35rem;
+    }
+    .bottom-table td,
+    th {
+      vertical-align: middle;
+      padding: 0.25rem !important;
+      background-color: #306eaf;
+      border: 1px solid white;
+    }
+
+    .bottom-table2 td {
+      vertical-align: middle;
+      padding: 0.25rem !important;
+      background-color: #212F3C;
+      border: 1px solid white;
+    }
+
+    @media (max-width : 1600px) {
+      body {
+        font-size: 12px;
+      }
+    } 
+
+    #p3-chart {
+      width: 100%;
+      height: 200px;
+    }
+    
+
+  </style>
+</head>
+
+<body id="page-top" bgcolor="#212F3C" style="background-color: #212F3C;";>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <!-- End of Topbar -->
+
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <a href='../index.html'> <button type="button" class="w-15 btn btn-sm btn-outline-danger text-center">Back</button></a> &nbsp; 
+      <button onclick="startFS(document.body);" type="button" class="w-15 btn btn-sm btn-outline-success text-center">FULL Screen to Press F11 button</button> 
+
+      <div class="row mb-1" id="fullscreen-element" onclick="//return startFS(document.body);" style="background-color:#212F3C;">
+
+        <div class="col-md-12">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
+            <div class="col p-3">
+
+              <div class="row mb-2" style="height: 300px;">
+                <!-- 좌측 상단 테이블 -->
+                <div class="col-md-3">
+                  <table class="table table-bordered text-center" style="background-color: #212F3C;">
+                    <thead>
+                      <tr class="text-center" style="background-color: #d8f0e1;">
+                        <td scope="col" colspan="4" class="text-dark font-weight-bold">
+                          <div class="d-flex justify-content-between">
+                            <span> </span>
+                            <span style="font-size:x-large">Tub Rail A&M</span>
+                            <img src="../../img/GREEN_WIFI_ICON.png" style="width: 8%;" alt="">
+                          </div>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody style="color: aquamarine;">
+                      <tr>
+                        <th scope="row" class="navyCol">품번</th>
+                        <td colspan="3">TUB RAIL (XD 16번) 홈프레셔</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="navyCol">생산</th>
+                        <td>
+                          <span id="production">0</span>
+                          <span>EA</span>
+                        </td>
+                        <td class="navyCol">불량</td>
+                        <td>
+                          <span id="defect">0</span>
+                          <span>EA</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="navyCol">진척율</th>
+                        <td>
+                          <span id="process_rate">0.0</span>
+                          <span>%</span>
+                        </td>
+                        <td class="navyCol">C/T</td>
+                        <td>5.0</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          <input type="text" class="form-control text-center text-danger font-weight-bold" value="MAIN IDLE X1 LIGHT LI" >
+                        </td>
+                        <td>
+                          <button class="btn btn-success w-100">자 동</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!-- 좌측 상단 두 번째 테이블 -->
+                  <table class="table table-bordered text-center" style="color: aquamarine; background-color: #212F3C; width: 60%;">
+                    <tbody>
+                      <tr>
+                        <td class="navyCol">L2 온도</td>
+                        <td>
+                          <span id="l2_temp">15</span>
+                          <span>°C</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="navyCol">L2 습도</td>
+                        <td>
+                          <span id="l2_humid">32.3</span>
+                          <span>%RH</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="navyCol">L2 분진</td>
+                        <td>
+                          <span id="l2_dust">5,686</span> 
+                          <span>ppb</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="col-md-5"></div>
+                <div class="col-md-4"></div>
+              </div>
+
+              <div class="row" id="center-area"></div>
+
+              <!-- 우측 및 하단부 영역-->
+              <div class="row">
+                <div class="col-md-8"></div>
+
+                <!-- 우측 하단부 영역 -->
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <!-- 우측 하단 테이블 1 -->
+                    <div class="col-md-5">
+                      <table class="table table-bordered text-center" style="color: aquamarine; background-color: #212F3C; ">
+                        <tbody>
+                          <tr>
+                            <th class="navyCol">비상정지 상태</th>
+                          </tr>
+                          <tr>
+                            <td class="text-white red1 red2">OP 비상정지</td>
+                          </tr>
+                          <tr>
+                            <td class="text-white red1 red3">SW BOX 비상정지</td>
+                          </tr>
+                          <tr>
+                            <td class="text-white red2">메인 압력 이상</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- 우측 하단 테이블 2 -->
+                    <div class="col-md-5">
+                      <table class="table table-bordered text-center bottom-table2"
+                        style="color: aquamarine; background-color: #212F3C !important;">
+                        <tbody>
+                          <tr>
+                            <th class="navyCol"></th>
+                            <th class="navyCol">프레스</th>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">전압</td>
+                            <td>
+                              <span id="voltage">4,394</span>
+                              <span>V</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">전류</td>
+                            <td>
+                              <span id="current">2,561</span>
+                              <span>A</span>
+                            </td>
+                          </td>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">공압</td>
+                            <td>
+                              <span id="pressure">6.9</span>
+                              <span>Bar</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">적산전력1</td>
+                            <td>
+                              <span id="power1">2,490</span>
+                              <span>KW</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">적산전력2</td>
+                            <td>
+                              <span id="power2">2,556</span>
+                              <span>KW</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="bg-primary text-white">적산전력3</td>
+                            <td>
+                              <span id="power3">2,228</span>
+                              <span>KW</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7"></div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                      <table class="table table-bordered">
+                        <tr>
+                          <th class="navyCol">진동센서</th>
+                        </tr>
+                        <tr>
+                          <td class="bg-white">
+                            <canvas id="p3-chart" width="400" height="200"></canvas>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- div class="container-fluid" -->
+
+  </div>
+  <!-- End of Main Content -->
+
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin-2.min.js"></script>
+
+  <!-- 페이지2 실시간 그래프 -->
+  <script src="../../js/demo/ss_st4.js"></script>
+
+
+</body>
+
+</html>

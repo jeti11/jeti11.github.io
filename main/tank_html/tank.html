@@ -1,0 +1,254 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Gas supplier</title>
+<link href="css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+		<!-- 
+
+
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+    if(element.requestFullScreen) {
+        element.requestFullScreen();
+    } else if(element.webkitRequestFullScreen ) {
+        element.webkitRequestFullScreen();
+    } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen(); // IE
+    }
+    }
+
+    // document만 인자로 받도록 하자!
+    function exitFS(element) {
+    if (element.exitFullscreen){
+        element.exitFullscreen();
+    }else if(element.cancelFullScreen) {
+        element.cancelFullScreen();
+    } else if(element.webkitCancelFullScreen ) {
+        element.webkitCancelFullScreen();
+    } else if(element.mozCancelFullScreen) {
+        element.mozCancelFullScreen();
+    } else if (element.msExitFullscreen) {
+        element.msExitFullscreen(); // IE
+    }
+    }
+
+    
+		// Display start
+		function StartDisplay() {    
+			display();    
+			timerId = setInterval(display, 2000);
+		}
+
+		// Display Stop
+		function StopDisplay() {    
+			if(timerId != null) {        
+				clearInterval(timerId);    
+			}
+		}
+
+  function display() {
+    /*
+    var i = 1;
+    while (i < 10) { // 변수 i가 10보다 작을 때만 while 문을 반복함.
+      document.write(i + "<br>");
+      i++; // 반복할 때마다 변수 i를 1씩 증가시켜 변수 i가 10보다 커지면 반복문을 종료함.
+    }
+    */
+    
+    /*
+    for (var i = 1; i < 5; i++) {
+      //document.write(i + "<br>");
+      setInnerHTML("t"+i+"_2",  1, 100, "kg/cm²");
+      setInnerHTML("hp"+i+"_3", 0, 100, "kg/cm²"  );
+
+			setInnerHTML("t"+i+"_3", 0, 100, "%"  );
+    }
+    */
+
+    setInnerHTML("t1_2",  13.5, 14.5, "%");
+    setInnerHTML("t2_2",  17.5, 18.5, "%");
+    setInnerHTML("t3_2",  12.5, 13.5, "%");
+    setInnerHTML("t4_2",  12.5, 13.5, "%");
+    setInnerHTML("t5_2",  10.5, 11.5, "%");
+    setInnerHTML("t6_2",  10.5, 11.5, "%");
+    
+    
+    setInnerHTML("t7_2", 6.25, 6.75, "kg/cm²"  );
+    setInnerHTML("t8_2", 1.45, 1.55, "kg/cm²"  );
+    
+    setInnerHTML("hp1_3", 12.5, 13.5, "kg/cm²");
+    setInnerHTML("hp2_3", 6.5, 7.5, "kg/cm²");
+    setInnerHTML("hp3_3", 1.75, 2.25, "kg/cm²");
+    setInnerHTML("hp4_3", 11.5, 12.5, "kg/cm²");
+    setInnerHTML("hp5_3", 9.5, 10.5, "kg/cm²");
+
+    setInnerHTML("o21_3", 1.25, 1.75, "kg/cm²");   
+    setInnerHTML("o22_3", 1.25, 1.75, "kg/cm²");   
+    setInnerHTML("o23_3", 1.25, 1.75, "kg/cm²");   
+    setInnerHTML("o24_3", 1.25, 1.75, "kg/cm²");   
+    
+  }
+  
+  
+
+		function rand(min, max) {
+		  return Math.floor ((Math.random() * ((max*10) - (min*10) + 1)) + (min*10)) / 10;
+		}
+		
+		
+		function setInnerHTML(id_name, min, max, unit)  {
+		  const element = document.getElementById(id_name);
+		  element.innerHTML = "<div style='color:#aa0000'>" + rand(min, max) + " " + "<label style='font-size:16px; color:#0000aa'>"+ unit +"</label></div>";
+		}
+		
+		
+		
+    function popup(p_html, name, option){
+            var url = p_html; //"popup.html";
+            //var name = "popup1";
+            //var option = "width = 500, height = 500, top = 100, left = 400, location = no, menubar = no, status = no";
+            //var option = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no";
+            
+            //if (newWindow) newWindow.clos();
+            //window.close();
+            var newWindow = window.open(url, name, option);
+        
+        // open after 3 seconds
+			//setTimeout(() => newWindow.close(), 3000);
+		
+    }
+        
+
+        
+		//-->
+   </script>
+
+</head>
+<!-- "background-color:#cfdbf8;"  -->
+<!-- <body style="background-color:#3f5b78;" onload="StartDisplay();"> -->
+<!--
+<body style="background-color:#f0f0f0;" onload="StartDisplay();">
+-->
+
+<body style="background-color:#cbcbcb;" onload="StartDisplay();">
+
+<div class='tk_bg'>
+<div id="control">
+		<a href="javascript:startFS(document.body);">FULL SCREEN</a>
+</div>
+
+<!---------------- pop up ----------------->
+<div class="rabt pop3" onClick= "javascript:popup('./pop/cast2.html','cast2', 'width = 700, height = 550, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+<div class="rabt pop5" onClick= "javascript:popup('./pop/cast1.html','cast1', 'width = 430, height = 450, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+
+
+<div class="rabt pop1" onClick= "javascript:popup('./pop/boil.html','boil',  'width = 430, height = 450, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+<div class="rabt pop2" onClick= "javascript:popup('./pop/gen.html', 'gen',   'width = 500, height = 450, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+<div class="rabt pop4" onClick= "javascript:popup('./pop/tur.html', 'tur',  'width = 430, height = 330, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+<div class="rabt pop6" onClick= "javascript:popup('./pop/nuc.html', 'nuc',  'width = 500, height = 500, top = 100, left = 800, location = no, menubar = no, status = no');"> </div>
+
+
+
+<!--
+  <div class="pop1">산소</div>
+  <div class="txt_tk02t">탄산</div>
+  <div class="txt_tk03t">질소</div>
+  <div class="txt_tk04t">질소</div>
+  <div class="txt_tk05t">알곤</div>
+  <div class="txt_tk06t">알곤</div>
+-->
+
+
+  <div class="t1">
+    <!--<div id="t1_1" class="t1_1">PT P1 002</div>  -->
+    <div id="t1_2" class="t1_2">4.종31 bar</div>
+    <!-- <div id="t1_4" class="t1_4">LT T01 101</div> -->
+  </div>
+
+  <div class="t2">
+    <div id="t2_2" class="t1_2">4.32 bar</div>
+
+  </div>
+  <div class="t3">
+    <div id="t3_2" class="t1_2">4.33 bar</div>
+
+   </div>
+  <div class="t4">
+     <div id="t4_2" class="t1_2">4.34 bar</div>
+
+   </div>   
+
+  <div class="t5">
+    <div id="t5_2" class="t1_2">4.35 bar</div>
+  </div>
+
+  <div class="t6">
+    <div id="t6_2" class="t1_2">4.36 bar</div>
+  </div>
+
+
+  <div class="t7">
+    <div id="t7_2" class="t1_2">4.37 bar</div>
+  </div>
+
+  <div class="t8">
+    <div id="t8_2" class="t1_2">4.38 bar</div>
+  </div>
+
+
+<!--  
+  <div id="bar1" class="bar1">0 bar</div>
+  <div class="bar1_b">PT T001 02</div>
+  <div class="txt1">PT P1 002</div>
+  <div class="txt2">PT P2 002</div>
+  <div class="txt3">PT P3 002</div>
+  <div class="txt4">PT P4 002</div>
+  
+  <div  id="bar2" class="bar2">0 bar</div>
+  <div class="bar2_b">PT P1 002</div>
+-->
+
+
+  
+  <div class="hp1">
+    <div id="hp1_3" class="hp1_3">0 bar</div>
+  </div>
+  
+  <div class="hp2">
+    <div id="hp2_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="hp3">
+    <div id="hp3_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="hp4">
+    <div id="hp4_3" class="hp1_3">0 bar</div>
+  </div>
+  
+  <div class="hp5">
+    <div id="hp5_3" class="hp1_3">0 bar</div>
+  </div>
+
+  
+  <div class="o21">
+    <div id="o21_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="o22">
+    <div id="o22_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="o23">
+    <div id="o23_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="o24">
+    <div id="o24_3" class="hp1_3">0 bar</div>
+  </div>
+
+
+</body>
+</div>
+</html>

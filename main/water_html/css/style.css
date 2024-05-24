@@ -1,0 +1,445 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.mapbg {
+    background-image: url("../images/map_bg.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+}
+/*-------------팝업---------------*/
+.pop-layer .pop-container {
+  padding: 0 ;
+}
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+}
+.pop-layer .btn-r {
+	font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  width: 860px;
+  height: 750px;;
+  background-color: #fff;
+  border: 2px solid #444444;
+	border-radius: 5px;
+  z-index: 10;
+}
+.dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 10px 0;
+	border-radius: 3px;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+
+a.btn-layerClose:hover {
+  background-color: #444444;
+  color: #fff;
+}
+
+.myButton {
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:11px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton2 {
+	background-color:#1c93a8;
+	border-radius:28px;
+	border:1px solid #0a0a0a;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:11px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #8a8a21;
+}
+.myButton2:hover {
+	background-color:#4b1c80;
+}
+.myButton2:active {
+	position:relative;
+	top:1px;
+}
+
+
+.tarea{
+	width: 500px;
+	height: 80px;
+	margin-top: 5px;
+	border: 1px solid #aaaaaa;
+	font-family: "Malgun Gothic";
+}
+.box1{
+	width: 280px;
+	height: 80px;
+	border: 1px solid #aaaaaa;
+	margin-top: 10px;
+	border-radius: 2px;
+	padding: 5px 10px;
+}
+.box1 ul li{
+	font-size:14px;
+	line-height: 22px;
+}
+
+.box_wrap1{
+	float: left;
+	margin: 10px;
+}
+.box_wrap2{
+	float: left;
+	margin: 10px;
+}
+.wrap1_lin2 ul li{
+	font-size: 14px;
+	float: left;
+	padding-left: 5px;
+}
+.floatL{
+	float: left;
+}
+.floatR{
+	float: right;
+}
+.col_R{
+	color: red;
+}
+.col_B{
+	color: blue;
+}
+.txt2{
+	font-size: 14px;
+}
+.font14{
+	font-size: 14px;
+}
+.box2{
+	margin: 5px 15px;
+	line-height: 25px;
+}
+.titbg{
+	background-color: #393939;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	padding-left: 10px;
+}
+.imgbg{
+	margin: 0 12px;
+}
+
+.i_btn1 {
+	width: 20px;
+	height: 20px;
+	background-image: url("../images/icon_back.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	
+	
+}
+
+.rabt{
+	width: 27px;
+	line-height: 27px;
+	height: 27px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	background-color: #ff1111;
+	border-radius: 50px;
+}
+.rabt:hover{
+	background-color: #ff6c00;
+}
+
+.btnbgB{
+	width: 27px;
+	line-height: 27px;
+	height: 27px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	background-color: #4056c1;
+	border-radius: 50px;
+}
+.btnbgB:hover{
+	background-color: #6AABE8;
+}
+.btnbgR{
+	width: 20px;
+	line-height: 20px;
+	height: 20px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	border:3px solid #ff5657;
+	background-color: #e0a548;
+	border-radius: 50px;
+}
+.btnbgR:hover{
+	background-color: #f06e28;
+}
+.water1{
+    position: absolute;
+    top: 73px;
+    left: 457px;
+}
+.water2{
+    position: absolute;
+    top: 100px;
+    left: 577px;
+}
+.water3{
+    position: absolute;
+    top: 406px;
+    left: 1064px;
+}
+.water4{
+    position: absolute;
+    top: 598px;
+    left: 1506px;
+}
+.water5{
+    position: absolute;
+    top: 575px;
+    left: 1458px;
+}
+.water6{
+    position: absolute;
+    top: 541px;
+    left: 861px;
+}
+.water7{
+    position: absolute;
+    top: 527px;
+    left: 812px;
+}
+.water8{
+    position: absolute;
+    top: 585px;
+    left: 856px;
+}
+.water9{
+    position: absolute;
+    top: 632px;
+    left: 780px;
+}
+.water10{
+    position: absolute;
+    top: 698px;
+    left: 818px;
+}
+.water11{
+    position: absolute;
+    top: 686px;
+    left: 702px;
+}
+.water12{
+    position: absolute;
+    top: 812px;
+    left: 775px;
+}
+.water13{
+    position: absolute;
+    top: 796px;
+    left: 732px;
+}
+.water14{
+    position: absolute;
+    top: 874px;
+    left: 881px;
+}
+.water15{
+    position: absolute;
+    top: 441px;
+    left: 715px;
+}
+.water16{
+	position: absolute;
+	top:395px;
+	left: 700px;	
+}
+.water17{
+	position: absolute;
+	top:410px;
+	left: 655px;	
+}
+
+.water18{
+    position: absolute;
+    top: 479px;
+    left: 493px;
+}
+.water19{
+    position: absolute;
+    top: 550px;
+    left: 474px;
+}
+.water20{
+    position: absolute;
+    top: 540px;
+    left: 442px;
+}
+.water21{
+    position: absolute;
+    top: 699px;
+    left: 533px;
+}
+.water22{
+    position: absolute;
+    top: 459px;
+    left: 1002px;
+}
+.water23{
+    position: absolute;
+    top: 463px;
+    left: 1081px;
+}
+.water24{
+    position: absolute;
+    top: 656px;
+    left: 1193px;
+}
+.water25{
+    position: absolute;
+    top: 649px;
+    left: 1225px;
+}
+.water26{
+    position: absolute;
+    top: 716px;
+    left: 1389px;
+}
+.water27{
+    position: absolute;
+    top: 678px;
+    left: 1130px;
+}
+.water28{
+    position: absolute;
+    top: 527px;
+    left: 1043px;
+}
+.water29{
+    position: absolute;
+    top: 56px;
+    left: 577px;
+}
+.water30{
+    position: absolute;
+    top: 87px;
+    left: 638px;
+}
+
+.water31{
+    position: absolute;
+    top: 19px;
+    left: 718px;
+}
+.water32{
+    position: absolute;
+    top: 13px;
+    left: 768px;
+}
+.water33{
+    position: absolute;
+    top: 55px;
+    left: 869px;
+}
+.water34{
+    position: absolute;
+    top: 144px;
+    left: 642px;
+}
+.water35{
+    position: absolute;
+    top: 182px;
+    left: 642px;
+}

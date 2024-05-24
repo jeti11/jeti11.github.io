@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta name="google bot" content="noindex">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>J.ONE MES</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <!-- google charts -->
+  <script type="text/javascript" src="../../js/loader.js"></script>
+
+
+  <script type="text/javascript">
+    
+    // window.setTimeout('window.location.reload()',10000); // 10초 reflash ..
+
+    function reload_page(){  
+        setTimeout('location.reload()',10000); 
+    }
+
+    function reload_div(arg_div){  
+        $("#div의 id").load(window.location.href + "#div의 id");
+        // 페이지 전체가 아닌 특정한 영역만을 새로고침 하고싶다면 위와 같이 jQuery의 load함수를 활용해주면 된다. 
+        // 그럼 $("#div의 id")에서 해당id를 가진 div영역이 함수 호출과 동시에 새로고침된다.
+    }
+    // setInterval('reload_div()', 10000);
+  //-->
+  </script>
+
+  <script>
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+      //var element = document.getElementById("fullscreen-element");
+
+      if (!document.fullscreenElement) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { /* Firefox */
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE/Edge */
+          element.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+
+
+
+    //document.getElementsByTagName("form")[0].onsubmit = function () {
+    //var c1 = this.count1.value
+    //return false;
+    //}
+
+
+  </script>
+
+</head>
+
+<body id="page-top" bgcolor="#212F3C" style="background-color: #212F3C;"
+  onload=" StartDisplay(); // return startFS(document.body);">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <!-- End of Topbar -->
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid"> <br />
+      <!---
+    <a href='data_status_daily_s1_dark.php'> <button type="button" class="w-15 btn btn-sm btn-outline-danger text-center">Back</button></a>  &nbsp; 
+    <button onclick="startFS(document.body);" type="button" class="w-15 btn btn-sm btn-outline-success text-center">FULL Screen to Press F11 button</button> <br/> <br/><br/>
+  -->
+
+
+
+      <div class="row mb-1" id="fullscreen-element" onclick="// return startFS(document.body);"
+        style="background-color:212F3C;">
+
+        <div class="col-md-12">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+
+
+              <div class="row mb-2">
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ TPL 1 Line(600T) ]</label>
+                  <!-- 라인 차트 생성할 영역 -->
+                  <div id="donutchart1" style="width:100%; height:320px; padding:0px 0px 0px 0px;"></div>
+
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> DOOR PRESS | L-R | TPL
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">200</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count1" style='font-size:22px;color:#F39C12;'>77</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.8%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ TPL 2 Line(800T) ]</label>
+                  <!-- 라인 차트 생성할 영역 -->
+                  <div id="donutchart2" style="width:100%; height:320px; padding:0px 00px 0px 0px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> DOOR PRESS | L-R | TPL2
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">200</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count2" style='font-size:22px;color:#F39C12;'>77</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.9%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 80%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ TPL 3 Line(900T) ]</label>
+                  <!-- 라인 차트 생성할 영역 -->
+                  <div id="donutchart3" style="width:100%; height:320px; padding:0px 00px 0px 0px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> TPL3 | 900T | LEFT
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">250</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count3" style='font-size:22px;color:#F39C12;'>177</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.8%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 5%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ TPL 4 Line(990T) ]</label>
+                  <!-- 라인 차트 생성할 영역 -->
+                  <div id="donutchart4" style="width:100%; height:320px; padding:0px 00px 0px 0px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> TPL 4 | Line | 990T
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">225</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count4" style='font-size:22px;color:#F39C12;'>27</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.8%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 48%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <br /><br />
+
+
+              <div class="row mb-4">
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ ASM 3 Line(TT) ]</label>
+                  <!-- 라인 차트 생성할 영역 -->
+                  <div id="donutchart6" style="width:100%; height:320px; padding:0px 00px 0px 0px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> ASM 3 | Line | TT
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">200</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count6" style='font-size:22px;color:#F39C12;'>5</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.8%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 23%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ TRANSFER 1 Line(600T) ]</label>
+                  <div id="donutchart7" style="width: '100%'; height: 320px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> TRANSFER | Line | 600T
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 목표수량: <font
+                            style="color:#F39C12;">200</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 생산수량: </label>
+                        <font id="p_count7" style='font-size:22px;color:#F39C12;'>154</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> 불량률: <font
+                            style="color:#F39C12;">0.9%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-8">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 20%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 77%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ KEPLER ASM4 ]</label>
+                  <div id="donutchart5" style="width:100%; height:320px; padding:0px 00px 0px 0px;"></div>
+                  <!-- <div class="text-sm text-primary text-uppercase mb-1">생산정보 :</div> -->
+                  <div class="row no-gutters align-items-center">
+                    <div class="mb-0 mr-2 col-md-12"><label style="color:white; font-size:22px"> KEPLER | ASM4 | ASSM
+                      </label></div>
+
+
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> KEP: <font
+                            style="color:#F39C12;"> 33.1%</font></label></div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> ASM4: </label>
+                        <font id="p_count5" style='font-size:22px;color:#F39C12;'>35%</font>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+                      <div class="mb-0 mr-2 "> <label style="color:white; font-size:22px"> ASSM: <font
+                            style="color:#F39C12;">31.8%</font></label></div>
+                    </div>
+
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 33.1%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35.0%"
+                          aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="progress progress-sm mr-2">
+                        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 31%"
+                          aria-valuenow="31" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label style="color:white; font-size:16px">[ SUPPORT ROLLER(R) ]</label>
+                  <br /><br /><br />
+                  <div id="scatterchart_material" style="width: '95%'; height: 350px;"></div>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+    </div>
+    <!-- div class="container-fluid" -->
+
+  </div>
+  <!-- End of Main Content -->
+
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../js/sb-admin-2.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+
+
+    // Display start
+    function StartDisplay() {
+      display();
+      timerId = setInterval(display, 5000);
+    }
+
+    // Display Stop
+    function StopDisplay() {
+      if (timerId != null) {
+        clearInterval(timerId);
+      }
+    }
+
+    function rand(min, max) {
+      return Math.floor((Math.random() * ((max) - (min) + 1)) + (min));
+    }
+
+    function setInnerHTML(id_name, min, max, unit) {
+      const element = document.getElementById(id_name);
+      //element.innerHTML = "<div style='color:#aa0000'>" + rand(min, max) + " " + "<label style='font-size:16px; color:#0000aa'>"+ unit +"</label></div>";
+      //element.innerHTML = "<font style='font-size:22px; color:#F39C12;'>" + rand(min, max) + unit + "</font>";
+      element.innerHTML = "<font style='font-size:22px; color:#F39C12;'>" + min + unit + "</font>";
+
+    }
+
+
+    var i1 = 17, i2 = 17, i3 = 100, i4 = 56, i6 = 35, i7 = 41;
+    /*
+    // var i1 = 77, i2 = 17, i3 = 10, i4 = 56, i6 = 35, i7 = 41 ;
+        localStorage.setItem("i1", i1);
+         localStorage.setItem("i2", i2);
+         localStorage.setItem("i3", i3);
+         localStorage.setItem("i4", i4);
+  
+         localStorage.setItem("i6", i6);
+         localStorage.setItem("i7", i7);
+  */
+
+
+    function display() {
+      /*
+      var i = 1;
+      while (i < 10) { // 변수 i가 10보다 작을 때만 while 문을 반복함.
+        document.write(i + "<br>");
+        i++; // 반복할 때마다 변수 i를 1씩 증가시켜 변수 i가 10보다 커지면 반복문을 종료함.
+      }
+      */
+
+      /*
+      for (var i = 1; i < 5; i++) {
+        //document.write(i + "<br>");
+        setInnerHTML("t"+i+"_2",  1, 100, "kg/cm²");
+        setInnerHTML("hp"+i+"_3", 0, 100, "kg/cm²"  );
+  
+        setInnerHTML("t"+i+"_3", 0, 100, "%"  );
+      }
+  
+          if (i1 < 28 || i1 > 100) {
+        i1 = 27, i2 = 17, i3 = 100, i4 = 56, i6 = 35, i7 = 41 ;
+        localStorage.setItem("i1", i1);
+        localStorage.setItem("i2", i2);
+        localStorage.setItem("i3", i3);
+        localStorage.setItem("i4", i4);
+        //localStorage.setItem("i5", 77);
+        localStorage.setItem("i6", i6);
+        localStorage.setItem("i7", i7);
+  
+    }  else {
+  
+        i1++, i2++, i3++, i4++, i6++, i7++ ;
+  
+        localStorage.setItem("i1", i1);
+        localStorage.setItem("i2", i2);
+        localStorage.setItem("i3", i3);
+        localStorage.setItem("i4", i4);
+        //localStorage.setItem("i5", 77);
+        localStorage.setItem("i6", i6);
+        localStorage.setItem("i7", i7);    
+    }
+  
+      */
+
+
+      i1++, i2++, i3++, i4++, i6++, i7++;
+      if (i1 < 28 || i1 > 200) {
+        i1 = 27, i2 = 17, i3 = 100, i4 = 56, i6 = 35, i7 = 41;
+      }
+      // setInnerHTML("t2_2",  17.5, 18.5, "%");
+      setInnerHTML("p_count1", i1, i1, "");
+      setInnerHTML("p_count2", i2, i2, "");
+      setInnerHTML("p_count3", i3, i3, "");
+      setInnerHTML("p_count4", i4, i4, "");
+      setInnerHTML("p_count6", i6, i6, "");
+      setInnerHTML("p_count7", i7, i7, "");
+
+      // setInnerHTML("t7_2", 6.25, 6.75, "kg/cm²"  );
+      PiedrawChart1();
+      PiedrawChart2();
+      PiedrawChart3();
+      PiedrawChart4();
+
+      PiedrawChart6();
+      PiedrawChart7();
+
+
+    }
+
+
+
+
+    google.charts.load('current', { packages: ['corechart', 'line', 'controls', 'scatter'] });
+
+    //google.charts.setOnLoadCallback(drawVisualization_air); 
+
+    google.charts.setOnLoadCallback(PiedrawChart1);
+    google.charts.setOnLoadCallback(PiedrawChart2);
+    google.charts.setOnLoadCallback(PiedrawChart3);
+    google.charts.setOnLoadCallback(PiedrawChart4);
+
+    google.charts.setOnLoadCallback(PiedrawChart5);
+    google.charts.setOnLoadCallback(PiedrawChart6);
+    google.charts.setOnLoadCallback(PiedrawChart7);
+
+    google.charts.setOnLoadCallback(drawChart_pfhz);
+
+
+
+    function PiedrawChart1() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i1, i1],
+        ['잔여수량: ' + (200 - i1), (200 - i1)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+    }
+
+
+
+    function PiedrawChart2() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i2, i2],
+        ['잔여수량: ' + (200 - i2), (200 - i2)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+    }
+
+
+
+    function PiedrawChart3() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i3, i3],
+        ['잔여수량: ' + (250 - i3), (250 - i3)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart3'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+    }
+
+
+
+    function PiedrawChart4() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i4, i4],
+        ['잔여수량: ' + (225 - i4), (225 - i4)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart4'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+
+    }
+
+    function PiedrawChart6() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i6, i6],
+        ['잔여수량: ' + (200 - i6), (200 - i6)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart6'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+    }
+
+
+    function PiedrawChart7() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'TPL 1 Line(600T)'],
+        ['생산수량: ' + i7, i7],
+        ['잔여수량: ' + (200 - i7), (200 - i7)],
+        //['양품수량', 90],
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: 'none', //{ position: "right", textStyle: {color: '#cccccc', fontSize: 14}},
+        pieSliceText: 'label',
+
+        colors: ['#306EAF', '#4630AF', '#30AFAA', '#aaaaff', '#ccccff', '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        width: '100%',
+        Height: '100%',
+        pieSliceTextStyle: { color: 'white', fontSize: 14 },
+
+
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 20,
+          left: 0,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart7'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+
+    }
+
+
+    function PiedrawChart5() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['KEPL.', 73.49],
+        ['ASM4', 77.61],
+        ['ASSM.', 70.61],
+        // ['Wait', 2],
+
+      ]);
+
+      var options = {
+        backgroundColor: '#212F3C',
+        legend: { position: "top", textStyle: { color: '#cccccc', fontSize: 14 } },
+        colors: ['#e02222', '#5555e0', '#69af44', '#ff1111', '#c55555', '#ffff44'],
+        //colors: ['#306EAF', '#4630AF',  '#30AFAA','#aaaaff', '#ccccff',  '#ff5533'],
+        //title: '상별 부하률(Day Load Activities)',
+        pieHole: 0.5,
+        is3D: false,
+        'width': '100%',
+        'Height': '100%',
+        chart: {
+          textStyle: { color: '#cccccc', fontSize: 16 },
+          title: 'Daily Current Activities'
+        },
+        chartArea: {
+          height: '100%',
+          width: '100%',
+          top: 25,
+          left: 20,
+          right: 10,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart5'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, options);
+    }
+
+
+  </script>
+
+
+  <script>
+
+    google.charts.setOnLoadCallback(drawChart_pfhz);
+
+
+    function drawChart_pfhz() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Hours data');
+      data.addColumn('number', 'Quality factor');
+
+      //[57, -1.01],[63, 0], [60,-0.9], [59, -0.8], [58.5, -0.882]
+      data.addRows([
+        [60.02, 0.87],
+        [59.97, 0.91],
+        [60.00, 0.91],
+        [60.02, 0.91],
+        [60.04, 0.91],
+        [61.03, 0.91], [60.03, 0.85], [60.02, 0.78], [62.03, 0.79], [60.02, 0.79], [60.05, 0.9],
+        [59.98, 0.9], [60.01, 0.91], [60.00, 0.89], [60.00, 0.87], [60.01, 0.9], [60.02, 0.88],
+        [60.05, 0.8], [60.01, 0.79], [59.97, 0.79], [61.02, 0.82], [60.01, 0.78], [61.02, 0.8],
+        [59.98, 0.91], [59.99, 0.91], [59.99, 0.92], [59.98, 0.85], [60.01, 0.85], [58.99, 0.82],
+        [59.98, 0.81], [58.98, 0.79], [59.97, 0.8], [59.99, 0.79], [60.00, 0.82], [59.97, 0.86],
+        [59.97, 0.85], [59.98, 0.83], [59.96, 0.81], [59.99, 0.77], [59.96, 0.79], [58.94, 0.8],
+        [60.00, 0.8], [58.99, 0.8], [60.02, 0.83], [58.98, 0.89], [60.03, 0.87], [59.97, 0.9]]);
+
+      var options = {
+        legend: { position: 'none', textStyle: { fontSize: 14 } },
+        height: '100%',
+        width: '100%',
+        backgroundColor: '#212F3C', hAxis: { title: 'Q vs x100[CT]', viewWindow: { min: 55, max: 65 }, gridlines: { count: -1 }, textStyle: { color: '#D4AC0D', fontSize: 16 } },
+        vAxis: { title: '불량률(Q Factor)', viewWindow: { min: 0.5, max: 1.05 }, textStyle: { color: '#D4AC0D', fontSize: 16 } },
+
+        chartArea: {
+          backgroundColor: { fill: '#212F3C', opacity: '100' },
+
+          top: 40,
+          left: 20,
+          right: 20,
+          bottom: 20
+        }
+      };
+
+      var chart = new google.charts.Scatter(document.getElementById('scatterchart_material'));
+      window.addEventListener('resize', function () { chart.draw(data, google.charts.Scatter.convertOptions(options)); }, false); //화면 크기에 따라 그래프 크기 변경
+      chart.draw(data, google.charts.Scatter.convertOptions(options));
+    }
+    //google.charts.setOnLoadCallback(drawChart_pfhz);
+
+    // startFS(document.body);
+
+
+
+    function drawVisualization_air() {
+      // Some raw data (not necessarily accurate)
+      var data = google.visualization.arrayToDataTable([
+        ['Time', '상전압x10', '전류x10', '선간전압'],
+        ['16:40', 3.08, 2.8, 0.00],
+        ['16:50', 3.3, 3, 0.00],
+        ['17:00', 3.19, 2.9, 0.00],
+        ['17:10', 3.19, 2.9, 0.00],
+        ['17:20', 3.3, 3, 0.00],
+        ['17:30', 3.74, 3.4, 0.00],
+        ['07:40', 3.52, 3.2, 0.00],
+        ['07:50', 3.52, 3.2, 0.00],
+        ['08:20', 1.87, 1.7, 29.30],
+        ['08:40', 1.65, 1.5, 26.03],
+        ['08:50', 1.43, 1.3, 4.53],
+        ['09:00', 1.98, 1.8, 7.41],
+        ['09:10', 1.87, 1.7, 9.38],
+        ['09:20', 1.43, 1.3, 9.51],
+        ['09:30', 1.54, 1.4, 9.87],
+        ['09:40', 1.87, 1.7, 4.77],
+        ['09:50', 2.09, 1.9, 7.97],
+        ['10:00', 2.09, 1.9, 4.77],
+        ['10:10', 1.98, 1.8, 8.80],
+        ['10:20', 2.31, 2.1, 4.78],
+        ['10:30', 1.65, 1.5, 4.68],
+        ['10:40', 2.64, 2.4, 5.40],
+        ['11:00', 1.54, 1.4, 9.34],
+        ['11:10', 1.98, 1.8, 5.64],
+        ['11:20', 1.87, 1.7, 10.16],
+        ['+1', null, null, null]
+      ]);
+
+      var options = {
+        legend: { position: "top", textStyle: { color: 'white', fontSize: 12 } },
+        backgroundColor: '#212F3C',
+        vAxis: { scaleType: 'log', title: '%', textStyle: { color: '#D4AC0D', } },
+        hAxis: { title: 'Time', textStyle: { color: '#D4AC0D', fontSize: 10, } }, seriesType: 'line', series: { 4: { type: 'bars' } }, colors: ['#ee5533', '#77cc66', '#6666cc', '#ff5533', '#306Ecc'], chartArea: {
+          height: '80%',
+          width: '100%',
+          top: 40,
+          left: 70,
+          right: 30,
+          bottom: 60
+        }
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div_air'));
+      window.addEventListener('resize', function () { chart.draw(data, options); }, false);
+      chart.draw(data, options);
+    }
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>TK2</title>
+<link href="css/style_tk2.css" rel="stylesheet">
+
+    <script type="text/javascript">
+		<!-- 
+
+
+    // 원하는 DOM객체를 인자로 받는다.
+    function startFS(element) {
+    if(element.requestFullScreen) {
+        element.requestFullScreen();
+    } else if(element.webkitRequestFullScreen ) {
+        element.webkitRequestFullScreen();
+    } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen(); // IE
+    }
+    }
+
+    // document만 인자로 받도록 하자!
+    function exitFS(element) {
+    if (element.exitFullscreen){
+        element.exitFullscreen();
+    }else if(element.cancelFullScreen) {
+        element.cancelFullScreen();
+    } else if(element.webkitCancelFullScreen ) {
+        element.webkitCancelFullScreen();
+    } else if(element.mozCancelFullScreen) {
+        element.mozCancelFullScreen();
+    } else if (element.msExitFullscreen) {
+        element.msExitFullscreen(); // IE
+    }
+    }
+
+    
+		// Display start
+		function StartDisplay() {    
+			display();    
+			timerId = setInterval(display, 2000);
+		}
+
+		// Display Stop
+		function StopDisplay() {    
+			if(timerId != null) {        
+				clearInterval(timerId);    
+			}
+		}
+
+  function display() {
+    /*
+    var i = 1;
+    while (i < 10) { // 변수 i가 10보다 작을 때만 while 문을 반복함.
+      document.write(i + "<br>");
+      i++; // 반복할 때마다 변수 i를 1씩 증가시켜 변수 i가 10보다 커지면 반복문을 종료함.
+    }
+    */
+    
+    for (var i = 1; i < 5; i++) {
+      //document.write(i + "<br>");
+      setInnerHTML("t"+i+"_3",  1, 1000, "Bar");
+      setInnerHTML("t0"+i+"_3", 0, 1000, "%"  );
+    
+      
+			//setInnerHTML("t"+i+"_3", 0, 100, "'C"  );
+			//setInnerHTML("t0"+i+"_3", 0, 100, "%"  );
+    }
+    
+    for (var ii = 1; ii < 9; ii++) {
+      setInnerHTML("hp"+ii+"_3", 0, 1000, "Bar"  );
+    }
+  
+    
+    
+  }
+  
+  
+
+		function rand(min, max) {
+		  return ((Math.floor(Math.random() * (max - min + 1)) + min) / 10);
+		}
+		
+		
+		function setInnerHTML(id_name, min, max, unit)  {
+		  const element = document.getElementById(id_name);
+		  element.innerHTML = "<div style='color:#CB5555'>" + rand(min, max) + " "+ unit +"</div>";
+		}
+		
+		
+		//-->
+   </script>
+
+</head>
+<!-- "background-color:#cfdbf8;"  -->
+
+<!-- <body style="background-color:#3f5b78;" onload="StartDisplay();"> -->
+<body style="background-image: url('./images/v_line.png');background-repeat: repeat-x;" onload="StartDisplay();">
+        
+        
+<div style="background-image: url('./images/tk_heather_trans_bg.png');background-repeat: no-repeat;width: 100%;height: 100vh;">
+ 
+
+<!--
+  <div class="txt_tk01t">TK-01</div>
+  <div class="txt_tk02t">TK-02</div>
+  <div class="txt_tk03t">TK-03</div>
+  <div class="txt_tk04t">TK-04</div>
+-->
+
+  <div class="t1">
+    <div id="t1_3" class="t1_3">10.11'C</div>
+  </div>
+  <div class="t2">
+    <div id="t2_3" class="t1_3">10.12%</div>
+  </div>
+
+  <div class="t3">
+    <div id="t3_3" class="t1_3">10.14%</div>
+  </div>
+
+  <div class="t4">
+    <div id="t4_3" class="t1_3">4.3 BAr</div>
+  </div>   
+  
+  
+  
+  <div class="t01">
+    <div id="t01_3" class="t1_3">10.11%</div>
+  </div>
+      
+  <div class="t02">
+    <div id="t02_3" class="t1_3">10.13%</div>
+  </div>  
+  <div class="t03">
+    <div id="t03_3" class="t1_3">4.31 BAr</div>
+  </div>  
+  
+  <div class="t04">
+    <div id="t04_3" class="t1_3">10.1%</div>
+  </div>   
+  
+  
+  
+  <!--
+  <div id="bar1" class="bar1">0 bar</div>
+  <div class="bar1_b">PT PO 002</div>
+  <div class="txt1">PT PO 002</div>
+  <div class="txt2">PT PO 002</div>
+  <div class="txt3">PT PO 002</div>
+  <div class="txt4">PT PO 002</div>
+
+  
+  <div  id="bar2" class="bar2">0 bar</div>
+  <div class="bar2_b">PT PO 002</div>
+  -->
+  
+  
+  <div class="hp1">
+    <div id="hp1_3" class="hp1_3">0 bar</div>
+  </div>
+  <div class="hp2">
+    <div id="hp2_3" class="hp1_3">1 bar</div>
+  </div>
+  <div class="hp3">
+    <div id="hp3_3" class="hp1_3">2 bar</div>
+  </div>
+  <div class="hp4">
+    <div id="hp4_3" class="hp1_3">3 bar</div>
+  </div>
+  <div class="hp5">
+    <div id="hp5_3" class="hp1_3">4 bar</div>
+  </div>  
+
+
+
+  <div class="hp6">
+    <div id="hp6_3" class="hp1_3">5 bar</div>
+  </div> 
+  <div class="hp7">
+    <div id="hp7_3" class="hp1_3">6 bar</div>
+  </div> 
+  <div class="hp8">
+    <div id="hp8_3" class="hp1_3">7 bar</div>
+  </div> 
+        
+<div id="control">
+    <!-- Begin Control button -->
+		<a href="javascript:history.go(-1);">▣</a>    
+    <a href="javascript:StartDisplay();">▶</a>
+		<a href="javascript:StopDisplay();">■</a>&nbsp; 
+		
+		<a href="map.html">MAP</a> 
+		
+		<a href="TK1.html">TK1</a>
+		<a href="TK2.html">TK2</a>
+		<a href="javascript:startFS(document.body);">FULL</a>
+		
+		<!-- Begin Page Content -->
+  	<!-- <button type="button" class="w-15 btn btn-outline-danger text-center" onclick="javascript:history.go(-1);">Home</button> &nbsp; &nbsp;  -->
+ 		<!-- <button onclick="startFS(document.body);" type="button" class="w-15 btn btn-outline-success text-center">FULL Screen to Press F11 button</button>-->
+</div>
+</body>
+</div>
+</html>
